@@ -132,7 +132,7 @@ d12 = np.zeros(len(f))
 d21 = s_side/z_in_side
 d22 = np.ones(len(f))
 
-Td = np.array([[d11, d12],
+Tside = np.array([[d11, d12],
               [d21, d22]])   # Matrix associated with the side branch.
     
 # =============================================================================
@@ -170,7 +170,7 @@ b21 = s_helm/z_in_helm
 b22 = np.ones(len(f))
 
 
-Tb = np.array([[b11, b12],
+Thelm = np.array([[b11, b12],
               [b21, b22]])   # Matrix associated with the Helmholtz resonator.
 
 
@@ -203,7 +203,7 @@ In case the input and output sections are different, you can use:
 """    
                 
 for i in range (len(f)): 
-    T = np.matmul(Tta[:,:,i],Td[:,:,i]) 
+    T = np.matmul(Tta[:,:,i],Tside[:,:,i]) 
     T = np.matmul(T,Ttb[:,:,i]) 
     T = np.matmul(T,Te[:,:,i])
     T = np.matmul(T,Ttc[:,:,i])
